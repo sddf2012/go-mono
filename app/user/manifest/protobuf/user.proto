@@ -1,0 +1,12 @@
+service UserService {
+  rpc GetUser(GetUserReq) returns (GetUserRes);
+}
+
+
+message GetUserReq{
+  required int32 id = 1;
+}
+message GetUserRes{
+  required int32  Id = 1;
+  optional string Name = 2;
+}
