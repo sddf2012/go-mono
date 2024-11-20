@@ -5,7 +5,7 @@
 package dao
 
 import (
-	"github.com/gogf/template-mono/app/user/internal/dao/internal"
+	"github.com/sddf2012/go-mono/app/user/internal/dao/internal"
 )
 
 // internalTUserDao is internal type for wrapping internal DAO implements.

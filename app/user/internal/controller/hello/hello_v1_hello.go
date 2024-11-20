@@ -4,7 +4,7 @@ import (
 	"context"
 	"github.com/gogf/gf/v2/frame/g"
 
-	"github.com/gogf/template-mono/app/user/api/hello/v1"
+	"github.com/sddf2012/go-mono/app/user/api/hello/v1"
 )
 
 func (c *ControllerV1) Hello(ctx context.Context, req *v1.HelloReq) (res *v1.HelloRes, err error) {

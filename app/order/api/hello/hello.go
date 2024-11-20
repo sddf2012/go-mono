@@ -7,7 +7,7 @@ package hello
 import (
 	"context"
 
-	"github.com/gogf/template-mono/app/order/api/hello/v1"
+	"github.com/sddf2012/go-mono/app/order/api/hello/v1"
 )
 
 type IHelloV1 interface {

@@ -5,7 +5,7 @@
 package hello
 
 import (
-	"github.com/gogf/template-mono/app/user/api/hello"
+	"github.com/sddf2012/go-mono/app/user/api/hello"
 )
 
 type ControllerV1 struct{}

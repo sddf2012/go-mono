@@ -1,11 +1,11 @@
 // =================================================================================
-// Code generated and maintained by GoFrame CLI tool. DO NOT EDIT. 
+// Code generated and maintained by GoFrame CLI tool. DO NOT EDIT.
 // =================================================================================
 
 package hello
 
 import (
-	"github.com/gogf/template-mono/app/api-template/api/hello"
+	"github.com/sddf2012/go-mono/app/api-template/api/hello"
 )
 
 type ControllerV1 struct{}
@@ -13,4 +13,3 @@ type ControllerV1 struct{}
 func NewV1() hello.IHelloV1 {
 	return &ControllerV1{}
 }
-

@@ -1,11 +1,11 @@
 package main
 
 import (
-	_ "github.com/gogf/template-mono/app/svc-template/internal/packed"
+	_ "github.com/sddf2012/go-mono/app/svc-template/internal/packed"
 
 	"github.com/gogf/gf/v2/os/gctx"
 
-	"github.com/gogf/template-mono/app/svc-template/internal/cmd"
+	"github.com/sddf2012/go-mono/app/svc-template/internal/cmd"
 )
 
 func main() {
