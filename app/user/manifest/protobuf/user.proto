@@ -1,12 +1,17 @@
-service UserService {
-  rpc GetUser(GetUserReq) returns (GetUserRes);
+syntax = "proto3";
+
+package userService;
+
+option go_package = "app/user/api/user/v1/grpc";
+
+service RpcUserService {
+  rpc RpcGetUser(RpcGetUserReq) returns (RpcGetUserRes);
 }
 
-
-message GetUserReq{
-  required int32 id = 1;
+message RpcGetUserReq{
+  int32 id = 1;
 }
-message GetUserRes{
-  required int32  Id = 1;
-  optional string Name = 2;
+message RpcGetUserRes{
+  int32  Id = 1;
+  string Name = 2;
 }

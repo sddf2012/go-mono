@@ -2,7 +2,6 @@ package user
 
 import (
 	"context"
-
 	"github.com/sddf2012/go-mono/app/user/api/user/v1"
 )
 

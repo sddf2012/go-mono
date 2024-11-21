@@ -5,11 +5,21 @@
 package user
 
 import (
+	"github.com/gogf/gf/contrib/rpc/grpcx/v2"
 	"github.com/sddf2012/go-mono/app/user/api/user"
+	"github.com/sddf2012/go-mono/app/user/api/user/v1/grpc"
 )
 
 type ControllerV1 struct{}
 
+type RpcControllerV1 struct {
+	grpc.UnimplementedRpcUserServiceServer
+}
+
 func NewV1() user.IUserV1 {
 	return &ControllerV1{}
+}
+
+func Register(s *grpcx.GrpcServer) {
+	grpc.RegisterRpcUserServiceServer(s.Server, &RpcControllerV1{})
 }
