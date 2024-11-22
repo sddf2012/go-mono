@@ -19,7 +19,8 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	RpcUserService_RpcGetUser_FullMethodName = "/userService.RpcUserService/RpcGetUser"
+	RpcUserService_RpcGetUser_FullMethodName  = "/userService.RpcUserService/RpcGetUser"
+	RpcUserService_RpcGetUser2_FullMethodName = "/userService.RpcUserService/RpcGetUser2"
 )
 
 // RpcUserServiceClient is the client API for RpcUserService service.
@@ -27,6 +28,7 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type RpcUserServiceClient interface {
 	RpcGetUser(ctx context.Context, in *RpcGetUserReq, opts ...grpc.CallOption) (*RpcGetUserRes, error)
+	RpcGetUser2(ctx context.Context, in *RpcGetUserReq2, opts ...grpc.CallOption) (*RpcGetUserRes2, error)
 }
 
 type rpcUserServiceClient struct {
@@ -47,11 +49,22 @@ func (c *rpcUserServiceClient) RpcGetUser(ctx context.Context, in *RpcGetUserReq
 	return out, nil
 }
 
+func (c *rpcUserServiceClient) RpcGetUser2(ctx context.Context, in *RpcGetUserReq2, opts ...grpc.CallOption) (*RpcGetUserRes2, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RpcGetUserRes2)
+	err := c.cc.Invoke(ctx, RpcUserService_RpcGetUser2_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // RpcUserServiceServer is the server API for RpcUserService service.
 // All implementations must embed UnimplementedRpcUserServiceServer
 // for forward compatibility.
 type RpcUserServiceServer interface {
 	RpcGetUser(context.Context, *RpcGetUserReq) (*RpcGetUserRes, error)
+	RpcGetUser2(context.Context, *RpcGetUserReq2) (*RpcGetUserRes2, error)
 	mustEmbedUnimplementedRpcUserServiceServer()
 }
 
@@ -64,6 +77,9 @@ type UnimplementedRpcUserServiceServer struct{}
 
 func (UnimplementedRpcUserServiceServer) RpcGetUser(context.Context, *RpcGetUserReq) (*RpcGetUserRes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RpcGetUser not implemented")
+}
+func (UnimplementedRpcUserServiceServer) RpcGetUser2(context.Context, *RpcGetUserReq2) (*RpcGetUserRes2, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RpcGetUser2 not implemented")
 }
 func (UnimplementedRpcUserServiceServer) mustEmbedUnimplementedRpcUserServiceServer() {}
 func (UnimplementedRpcUserServiceServer) testEmbeddedByValue()                        {}
@@ -104,6 +120,24 @@ func _RpcUserService_RpcGetUser_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RpcUserService_RpcGetUser2_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RpcGetUserReq2)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RpcUserServiceServer).RpcGetUser2(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RpcUserService_RpcGetUser2_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RpcUserServiceServer).RpcGetUser2(ctx, req.(*RpcGetUserReq2))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // RpcUserService_ServiceDesc is the grpc.ServiceDesc for RpcUserService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -114,6 +148,10 @@ var RpcUserService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RpcGetUser",
 			Handler:    _RpcUserService_RpcGetUser_Handler,
+		},
+		{
+			MethodName: "RpcGetUser2",
+			Handler:    _RpcUserService_RpcGetUser2_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

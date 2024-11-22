@@ -6,12 +6,22 @@ option go_package = "app/user/api/user/v1/grpc";
 
 service RpcUserService {
   rpc RpcGetUser(RpcGetUserReq) returns (RpcGetUserRes);
+  rpc RpcGetUser2(RpcGetUserReq2) returns (RpcGetUserRes2);
+
 }
 
 message RpcGetUserReq{
   int32 id = 1;
 }
 message RpcGetUserRes{
+  int32  Id = 1;
+  string Name = 2;
+}
+
+message RpcGetUserReq2{
+  int32 id = 1;
+}
+message RpcGetUserRes2{
   int32  Id = 1;
   string Name = 2;
 }
